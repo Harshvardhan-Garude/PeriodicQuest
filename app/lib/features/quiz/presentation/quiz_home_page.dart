@@ -47,7 +47,6 @@ class _QuizHomePageState extends State<QuizHomePage> {
   Widget build(BuildContext context) {
     final strings = QuizStrings.of(_selectedLanguage);
     final puzzleStrings = PeriodicPuzzleStrings.of(_selectedLanguage);
-    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       body: Container(
@@ -87,90 +86,7 @@ class _QuizHomePageState extends State<QuizHomePage> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 18),
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(24),
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [Color(0xFFFFF0A4), Color(0xFFFFC7E7)],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            borderRadius: BorderRadius.circular(32),
-                            border: Border.all(
-                              color: const Color(0xFFFFC97A),
-                              width: 2,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: const Color(
-                                  0xFFFFB84D,
-                                ).withValues(alpha: 0.28),
-                                blurRadius: 26,
-                                offset: const Offset(0, 12),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 14,
-                                  vertical: 8,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withValues(alpha: 0.8),
-                                  borderRadius: BorderRadius.circular(999),
-                                ),
-                                child: Text(
-                                  strings.quizCollectionLabel,
-                                  style: textTheme.labelLarge?.copyWith(
-                                    color: const Color(0xFF7E4B1F),
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    '🧪',
-                                    style: TextStyle(fontSize: 42),
-                                  ),
-                                  const SizedBox(width: 14),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          strings.quizModeTitle,
-                                          style: textTheme.displaySmall
-                                              ?.copyWith(
-                                                color: const Color(0xFF1A3A5C),
-                                                fontWeight: FontWeight.w900,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-                              Text(
-                                strings.chooseQuizStyleLabel,
-                                style: textTheme.titleMedium?.copyWith(
-                                  color: const Color(0xFF45657D),
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 22),
+                        const SizedBox(height: 16),
                         QuizModeCard(
                           title: strings.quickQuizTitle,
                           heroLabel: strings.quizReadyLabel,

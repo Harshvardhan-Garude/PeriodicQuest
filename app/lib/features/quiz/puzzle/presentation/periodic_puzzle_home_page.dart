@@ -50,7 +50,6 @@ class _PeriodicPuzzleHomePageState extends State<PeriodicPuzzleHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final starterBoards = widget.generator.boardsForLayer(
       PeriodicPuzzleLayer.starter,
     );
@@ -94,76 +93,7 @@ class _PeriodicPuzzleHomePageState extends State<PeriodicPuzzleHomePage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 18),
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [Color(0xFFCFF4FF), Color(0xFFFFE3A4)],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(30),
-                        border: Border.all(
-                          color: const Color(0xFF7CC9E8),
-                          width: 2,
-                        ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 14,
-                              vertical: 8,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withValues(alpha: 0.82),
-                              borderRadius: BorderRadius.circular(999),
-                            ),
-                            child: Text(
-                              _strings.puzzleTitle,
-                              style: textTheme.labelLarge?.copyWith(
-                                color: const Color(0xFF28567E),
-                                fontWeight: FontWeight.w900,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text('🧩', style: TextStyle(fontSize: 42)),
-                              const SizedBox(width: 14),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      _strings.puzzleTitle,
-                                      style: textTheme.displaySmall?.copyWith(
-                                        color: const Color(0xFF17334A),
-                                        fontWeight: FontWeight.w900,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 6),
-                                    Text(
-                                      _strings.puzzleSubtitle,
-                                      style: textTheme.titleLarge?.copyWith(
-                                        color: const Color(0xFF35566F),
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 22),
+                    const SizedBox(height: 16),
                     PeriodicPuzzleLayerCard(
                       title: _strings.starterLayerTitle,
                       subtitle: _strings.starterLayerSubtitle,

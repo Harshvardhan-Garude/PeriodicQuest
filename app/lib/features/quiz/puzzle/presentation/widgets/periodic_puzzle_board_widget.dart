@@ -28,48 +28,77 @@ class PeriodicPuzzleBoardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const tileWidth = 104.0;
-    const tileHeight = 128.0;
     final tilesByPosition = <String, PeriodicPuzzleTile>{
       for (final tile in board.tiles) '${tile.row}-${tile.column}': tile,
     };
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: SizedBox(
-        width: (board.maxColumn + 1) * tileWidth,
-        child: Column(
-          children: [
-            for (var row = 0; row <= board.maxRow; row++) ...[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+    final compressedColumns = _compressedColumnUnits();
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final safeWidth = constraints.maxWidth.isFinite
+            ? constraints.maxWidth
+            : 820.0;
+        final gap = safeWidth < 560 ? 4.0 : 5.0;
+        final boardUnitWidth =
+            compressedColumns.values.fold<double>(
+              0,
+              (max, value) => value > max ? value : max,
+            ) +
+            1;
+        final maxBoardWidth = safeWidth.clamp(280.0, 900.0);
+        final tileWidth =
+            ((maxBoardWidth - ((boardUnitWidth - 1) * gap)) / boardUnitWidth)
+                .clamp(48.0, 76.0);
+        final tileHeight = (tileWidth * 1.08).clamp(52.0, 82.0);
+        final rowGap = safeWidth < 560 ? 4.0 : 5.0;
+        final step = tileWidth + gap;
+        final boardWidth =
+            (compressedColumns.values.fold<double>(
+                  0,
+                  (max, value) => value > max ? value : max,
+                ) *
+                step) +
+            tileWidth;
+        final boardHeight =
+            ((board.maxRow + 1) * tileHeight) + (board.maxRow * rowGap);
+
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: SizedBox(
+            width: boardWidth,
+            height: boardHeight,
+            child: Stack(
+              children: [
+                for (var row = 0; row <= board.maxRow; row++)
                   for (var column = 0; column <= board.maxColumn; column++)
-                    Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: SizedBox(
-                        width: tileWidth - 8,
-                        height: tileHeight - 8,
+                    if (tilesByPosition['$row-$column'] case final tile?)
+                      Positioned(
+                        left: compressedColumns[column]! * step,
+                        top: row * (tileHeight + rowGap),
+                        width: tileWidth,
+                        height: tileHeight,
                         child: _buildCell(
                           context,
-                          tilesByPosition['$row-$column'],
+                          tile,
+                          tileWidth: tileWidth,
+                          tileHeight: tileHeight,
                         ),
                       ),
-                    ),
-                ],
-              ),
-            ],
-          ],
-        ),
-      ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildCell(BuildContext context, PeriodicPuzzleTile? tile) {
-    if (tile == null) {
-      return const SizedBox.shrink();
-    }
-
+  Widget _buildCell(
+    BuildContext context,
+    PeriodicPuzzleTile tile, {
+    required double tileWidth,
+    required double tileHeight,
+  }) {
     final categoryLabel = QuizAnswerOption(
       id: tile.element.sym,
       labelEnglish: tile.element.name,
@@ -89,7 +118,29 @@ class PeriodicPuzzleBoardWidget extends StatelessWidget {
       isFilled: isFilled,
       isSelected: selectedTileId == tile.id && tile.isMissing && !isFilled,
       showSuccess: completedTileId == tile.id,
+      tileWidth: tileWidth,
+      tileHeight: tileHeight,
       onTap: tile.isMissing && !isFilled ? () => onTileTap(tile) : null,
     );
+  }
+
+  Map<int, double> _compressedColumnUnits() {
+    final columns = board.tiles.map((tile) => tile.column).toSet().toList()
+      ..sort();
+
+    final positions = <int, double>{};
+    double current = 0;
+    int? previous;
+
+    for (final column in columns) {
+      if (previous != null) {
+        final gap = column - previous;
+        current += gap == 1 ? 1 : 1 + ((gap - 1) * 0.42);
+      }
+      positions[column] = current;
+      previous = column;
+    }
+
+    return positions;
   }
 }

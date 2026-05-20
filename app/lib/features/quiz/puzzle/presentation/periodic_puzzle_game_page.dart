@@ -139,12 +139,12 @@ class _PeriodicPuzzleGamePageState extends State<PeriodicPuzzleGamePage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 18),
+                    const SizedBox(height: 12),
                     _buildHeader(),
-                    const SizedBox(height: 18),
+                    const SizedBox(height: 12),
                     Container(
                       width: double.infinity,
-                      padding: const EdgeInsets.all(18),
+                      padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
                         color: Colors.white.withValues(alpha: 0.92),
                         borderRadius: BorderRadius.circular(28),
@@ -189,12 +189,12 @@ class _PeriodicPuzzleGamePageState extends State<PeriodicPuzzleGamePage> {
   Widget _buildHeader() {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [Color(0xFFCFF4FF), Color(0xFFFFE0A8)],
         ),
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -203,24 +203,24 @@ class _PeriodicPuzzleGamePageState extends State<PeriodicPuzzleGamePage> {
             widget.board.titleFor(_language),
             style: const TextStyle(
               color: Color(0xFF17334A),
-              fontSize: 30,
+              fontSize: 22,
               fontWeight: FontWeight.w900,
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 4),
           Text(
             widget.board.groupLabelFor(_language) ??
                 widget.board.subtitleFor(_language),
             style: const TextStyle(
               color: Color(0xFF35566F),
-              fontSize: 18,
+              fontSize: 14,
               fontWeight: FontWeight.w800,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 10),
           Wrap(
-            spacing: 10,
-            runSpacing: 10,
+            spacing: 8,
+            runSpacing: 8,
             children: [
               _StatusChip(label: _strings.timeText(_elapsedTime)),
               _StatusChip(
@@ -545,7 +545,7 @@ class _StatusChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
         color: Colors.white.withValues(alpha: 0.78),
         borderRadius: BorderRadius.circular(999),
@@ -554,6 +554,7 @@ class _StatusChip extends StatelessWidget {
         label,
         style: const TextStyle(
           color: Color(0xFF2C4E6E),
+          fontSize: 12,
           fontWeight: FontWeight.w800,
         ),
       ),

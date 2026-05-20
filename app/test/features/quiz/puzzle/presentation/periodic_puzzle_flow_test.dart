@@ -77,8 +77,8 @@ void main() {
     await tester.tap(find.text('Español'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Rompecabezas periódico'), findsWidgets);
     expect(find.text('Nivel 1: Elementos iniciales'), findsOneWidget);
+    expect(find.text('Volver al menú del quiz'), findsOneWidget);
   });
 
   testWidgets('Starting Layer 1 shows the puzzle board and answer options', (

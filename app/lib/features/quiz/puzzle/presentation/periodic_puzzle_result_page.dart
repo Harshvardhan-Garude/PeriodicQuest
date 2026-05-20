@@ -134,15 +134,15 @@ class _PeriodicPuzzleResultPageState extends State<PeriodicPuzzleResultPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 18),
+                    const SizedBox(height: 12),
                     Container(
                       width: double.infinity,
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           colors: [Color(0xFFFFF0A6), Color(0xFFCFF3FF)],
                         ),
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(24),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,20 +151,20 @@ class _PeriodicPuzzleResultPageState extends State<PeriodicPuzzleResultPage> {
                             _strings.puzzleCompleteLabel,
                             style: const TextStyle(
                               color: Color(0xFF17334A),
-                              fontSize: 32,
+                              fontSize: 24,
                               fontWeight: FontWeight.w900,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 4),
                           Text(
                             widget.board.titleFor(_language),
                             style: const TextStyle(
                               color: Color(0xFF35566F),
-                              fontSize: 18,
+                              fontSize: 14,
                               fontWeight: FontWeight.w800,
                             ),
                           ),
-                          const SizedBox(height: 14),
+                          const SizedBox(height: 10),
                           TweenAnimationBuilder<int>(
                             tween: IntTween(begin: 0, end: boardProgress.stars),
                             duration: const Duration(milliseconds: 650),
