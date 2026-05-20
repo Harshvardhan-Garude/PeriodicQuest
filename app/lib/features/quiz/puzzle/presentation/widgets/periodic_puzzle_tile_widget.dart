@@ -75,18 +75,17 @@ class PeriodicPuzzleTileWidget extends StatelessWidget {
                   gradient: gradient,
                   borderRadius: BorderRadius.circular(radius),
                   border: Border.all(
-                    color: isSelected
-                        ? const Color(0xFF28567E)
-                        : borderColor,
+                    color: isSelected ? const Color(0xFF28567E) : borderColor,
                     width: isSelected ? 2.4 : 1.6,
                     strokeAlign: BorderSide.strokeAlignInside,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: (showSuccess
-                              ? const Color(0xFF44C776)
-                              : style.glowColor)
-                          .withValues(alpha: 0.24),
+                      color:
+                          (showSuccess
+                                  ? const Color(0xFF44C776)
+                                  : style.glowColor)
+                              .withValues(alpha: 0.24),
                       blurRadius: showSuccess ? 24 : 16,
                       offset: const Offset(0, 8),
                     ),
@@ -297,7 +296,7 @@ class _MissingTileFace extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
       ],
     );
   }
