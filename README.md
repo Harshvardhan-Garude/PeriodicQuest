@@ -2,7 +2,15 @@
 
 PeriodicQuest is a Flutter app for learning the periodic table. In the Explore
 screen, learners can discover groups such as metals, nonmetals, and noble gases
-and open the element catalog.
+and open the element catalog. The app also includes bilingual quizzes and a
+periodic-table puzzle.
+
+## Team
+
+Repository contributors include Amarnath Kaushik, Dhruv Girish Savla, and
+Harshvardhan Garude. Harshvardhan's recorded feature commits add the bilingual
+quiz modes and periodic puzzle; the Explore screen includes work by Amarnath
+and Dhruv.
 
 ## Flutter Setup Instructions
 
