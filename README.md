@@ -1,20 +1,21 @@
 # PeriodicQuest
 
-Production-ready baseline for a Flutter application repository with clean contribution standards, issue/PR workflows, and CI checks.
+PeriodicQuest is a Flutter app for learning the periodic table. In the Explore
+screen, learners can discover groups such as metals, nonmetals, and noble gases
+and open the element catalog. The app also includes bilingual quizzes and a
+periodic-table puzzle.
 
-## Project Overview
+## Team
 
-This repository is structured for team collaboration and long-term maintainability, including:
-- standardized issue and pull request templates
-- contribution and review guidelines
-- CI checks for formatting, analysis, and tests
-
-Implementation-specific product details should be filled in as the app scope is finalized.
+Repository contributors include Amarnath Kaushik, Dhruv Girish Savla, and
+Harshvardhan Garude. Harshvardhan's recorded feature commits add the bilingual
+quiz modes and periodic puzzle; the Explore screen includes work by Amarnath
+and Dhruv.
 
 ## Flutter Setup Instructions
 
 1. Install Flutter SDK from the official docs: [Flutter Install Guide](https://docs.flutter.dev/get-started/install)
-2. Verify setup:
+2. Use a Flutter SDK with Dart 3.10.3 or newer in the Dart 3 series, as specified in [app/pubspec.yaml](app/pubspec.yaml). Verify setup:
    ```bash
    flutter doctor
    ```
@@ -22,13 +23,16 @@ Implementation-specific product details should be filled in as the app scope is 
 
 ## Install Dependencies
 
-From repository root:
+From the repository root:
 
 ```bash
+cd app
 flutter pub get
 ```
 
 ## Run the App
+
+From `app/`:
 
 1. List available devices:
    ```bash
@@ -41,7 +45,7 @@ flutter pub get
 
 ## Run Tests
 
-Run unit/widget tests:
+From `app/`, run the unit and widget tests:
 
 ```bash
 flutter test
@@ -56,24 +60,10 @@ flutter analyze
 
 ## Folder Structure
 
-Current repository baseline:
-
-```text
-.
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   ├── workflows/
-│   ├── CODEOWNERS
-│   └── PULL_REQUEST_TEMPLATE.md
-├── CONTRIBUTING.md
-├── README.md
-└── .gitignore
-```
-
-When app files are present, expected Flutter structure commonly includes:
-- `lib/` for app source code
-- `test/` for test suites
-- `android/`, `ios/`, `web/`, `macos/`, `linux/`, `windows/` for platform targets
+- [app/lib/](app/lib/) contains the Flutter application.
+- [app/test/](app/test/) contains the tests.
+- [app/pubspec.yaml](app/pubspec.yaml) defines the dependencies and Dart version.
+- [.github/workflows/ci.yml](.github/workflows/ci.yml) runs the checks from `app/`.
 
 ## Branch Strategy
 
